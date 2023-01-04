@@ -1,0 +1,2 @@
+Crossorigin is an attribute that is used to share resources from one domain to another.
+It is used to handle the CROS requests which checks whether it is safe to share resources from other domains.
