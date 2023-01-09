@@ -1,0 +1,22 @@
+***NORMAL HTML PARSING***
+
+                         <SCRIPT SRC="">
+
+##### HTML PARSING ######                                                           ##### HTML PARSING ####### 
+                         -------- SCRIPT FETCHING ------ ______SCRIPT EXECUTE ______
+
+ ***ASYNC HTML PARSING***                        
+                         <SCRIPT ASYNC SRC="">
+
+########### HTML PARSING ##########                           ##### HTML PARSING ####### 
+    -------- SCRIPT FETCHING ------ ______SCRIPT EXECUTE ______
+
+***DEFER HTML PARSING***
+                         <SCRIPT SRC="">
+
+################# HTML PARSING ################################## `HTML PARSING DONE`                                                         
+                -------- SCRIPT FETCHING ------                  ______SCRIPT EXECUTE ______
+
+In general we use ASYNC for modular codes which are independent of each other for their functions
+and we prefer DEFER if our codes' functionalities are dependent on each other i.e order of execution of 
+functions.

@@ -1,0 +1,10 @@
+in Developer mode the code is the default mode in which the code will run also providing with
+useful tools and debugging
+
+in production mode the entire code is minified compressed in whaterver means in order to
+increase the performance of the code for the users end.
+
+
+In short the dev mode is for the Developers advantage i.e it helps the Developers have a good
+experiance with the code and the production mode is for the users to have a good experiance with the
+ui.
