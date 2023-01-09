@@ -1,0 +1,5 @@
+A library is an additional module that is required for any program to undergo a particular function.
+It is basically a collection of classes and functions.Eg.React
+
+A framework is a special kind of library that is not funished but is a blueprint,
+all it needs is the users customization by providing with what it needs. Eg. JSON
