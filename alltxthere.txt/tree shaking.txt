@@ -1,0 +1,2 @@
+it is a term for removing dead code from our codes.it relies on import export statements to 
+detect if our code modules are i/e between files.

@@ -1,0 +1,12 @@
+it is the directory where all the modules or libraries that we install are stored.
+it is not good it upload it to git as the libraries can be downloaded as we have the package.lock json file
+also the node modules directory is very heavy in size.
+
+###dist###
+it contains minimized version of the souce code.   
+###browserslist######
+ Browserslist is a tool that allows specifying which browsers should be supported in your app .
+
+
+ Using tilde ( ~ ) gives you bug fix releases and 
+ caret ( ^ ) gives you backwards-compatible new functionality as wel

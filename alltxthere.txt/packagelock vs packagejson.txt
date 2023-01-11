@@ -1,0 +1,3 @@
+The package.json file defines the rules required to run your application and install dependencies. 
+On the other hand, the package-lock.json file holds detailed information on all the dependencies 
+installed based on the package.json rules.

@@ -1,0 +1,25 @@
+###### powers ######
+
+* bundling
+* minify
+* file watching
+* dev and production builds
+* caching while development
+* image optimise
+* tree shaking
+* consistent hashing algo
+* https testing
+* zero config
+* compatible with older versions of browsers
+
+###### Fav ######
+
+* file watching
+ it has an algo that consistently watches our files for any changes that are made to quickly do 
+ hot module replacement.
+
+* tree shaking
+  it gets rid of all the dead code us used
+
+* https testing
+  helps us to test our project on https protocols as well

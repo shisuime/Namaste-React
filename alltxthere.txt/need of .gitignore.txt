@@ -1,0 +1,2 @@
+A gitignore file specifies intentionally untracked files that Git should ignore.we should add all the files that 
+can be regenerated in gitignore and not add all the files that we need that cannot be regenerated 

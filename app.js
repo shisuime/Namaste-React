@@ -1,10 +1,24 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 const heading1 = React.createElement(
   "h1",
   null,
   "Namaste everyone from React!"
 );
-const heading2 = React.createElement("h1", null, "heading 2");
-const heading3 = React.createElement("h1", null, "heading 3");
+const heading2 = React.createElement(
+  "h1",
+  {
+    key: 1,
+  },
+  "heading 2"
+);
+const heading3 = React.createElement(
+  "h1",
+  {
+    key: 2,
+  },
+  "heading 3"
+);
 const container = React.createElement(
   "div",
   {
