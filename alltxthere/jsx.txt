@@ -1,0 +1,7 @@
+jsx is a syntax for writing javascript with html like syntax
+
+
+### powers of jsx ###
+sanitization
+can perform javascript functions aswell as html attributes
+jsx in the end gives objects

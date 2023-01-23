@@ -1,21 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 const heading1 = React.createElement(
   "h1",
   {
     key: "1",
   },
-  "Namaste everyone from React!"
+  "heading1"
 );
 const heading2 = React.createElement(
-  "h1",
+  "h2",
   {
     key: "2",
   },
   "heading 2"
 );
 const heading3 = React.createElement(
-  "h1",
+  "h3",
   {
     key: "3",
   },
@@ -24,7 +25,7 @@ const heading3 = React.createElement(
 const container = React.createElement(
   "div",
   {
-    id: "container",
+    class: "title",
   },
   [heading1, heading2, heading3]
 );

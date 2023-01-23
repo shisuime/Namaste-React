@@ -1,0 +1,8 @@
+composing components inside another component is called component composition
+
+
+### {component} vs<component/> vs <component></component> ###
+
+{component} is calling a react element named component
+
+<component/> is calling a react component same for the other one
