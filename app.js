@@ -2,15 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./App.css";
 
-const Header = () => {
+const Title = () => <h1>Food Villa</h1>;
+
+const Headercomponent = () => {
   return (
-    <div className="title">
-      <div className="logo">
-        <img src="ds_circle_logo.png" />
-      </div>
-      <input type="text" className="search-bar" />
-      <div className="user-icon">
-        <img src="ds]_circle_logo.png" />
+    <div className="header-component">
+      <Title />
+      <div className="nav-items">
+        <ul>
+          <li>home</li>
+          <li>about us</li>
+          <li>cart</li>
+        </ul>
       </div>
     </div>
   );
@@ -18,4 +21,4 @@ const Header = () => {
 
 const doc = document.getElementById("root");
 const root = ReactDOM.createRoot(doc);
-root.render(<Header />);
+root.render(<Headercomponent />);
