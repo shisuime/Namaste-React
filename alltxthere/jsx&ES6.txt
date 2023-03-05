@@ -1,0 +1,7 @@
+Jsx is not mandatory for react nor it is a requirement it is just a simplified way to write 
+React.createElement()
+
+Es6 is also not mandatory but it is a requirement for react as react much easier to learn if you know ES6
+and modern react largely uses ES6 features.
+
+{/* This is a JSX comment */} 

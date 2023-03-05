@@ -1,0 +1,2 @@
+as we know a react component can only have one parent so react fragment allows us to add extra 
+components without adding extra nodes in the DOM i.e <div> tags everytime.

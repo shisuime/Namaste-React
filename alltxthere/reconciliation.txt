@@ -1,0 +1,6 @@
+The mechanism of diffing one tree with another to determine which parts are required to be changed and 
+then update the original DOM with it is called Reconciliation in react.
+
+react fibre
+Fiber is the new reconciliation engine in React 16. 
+Its main goal is to enable incremental rendering of the virtual DOM.

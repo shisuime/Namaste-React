@@ -1,0 +1,1 @@
+react component can only have one parent

@@ -1,0 +1,2 @@
+A "config-driven UI" is a user interface that is built and configured using a 
+declarative configuration file or data structure, rather than being hardcoded.

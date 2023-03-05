@@ -1,0 +1,6 @@
+Keys help React identify which items have changed, are added, or are removed.
+we need it to give a unique id to every element so that react can easy work out with the positioning 
+,removing or adding with the addition of positioning.
+
+yes we can use index as keys in react but it is not recommended as it can negatively impact performance and may 
+cause issues with component state.

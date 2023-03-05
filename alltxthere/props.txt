@@ -1,0 +1,2 @@
+props are nothing but objects that are created as parameters once we pass it on the component as arguments.
+just like normal functions.
