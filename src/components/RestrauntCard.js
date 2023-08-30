@@ -1,10 +1,10 @@
-const RestrauntCard = ({ url, name, cuisines, rating }) => {
+const RestrauntCard = ({ img, title, desc, type }) => {
     return (
       <div className="card">
-        <img src={url}></img>
-        <h1>{name}</h1>
-        <h2>{cuisines.join(", ")}</h2>
-        <h3>{rating}</h3>
+        <img src={img}></img>
+        <h1>{title}</h1>
+        <h2>{desc}</h2>
+        <h3>{type}</h3>
       </div>
     );
   };
