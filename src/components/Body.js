@@ -1,7 +1,8 @@
 import Simmer from "./Simmer";
 import RestrauntCard from "./RestrauntCard";
 import { useEffect, useState } from "react";
-
+import { useMyContext } from "./Context";
+import { Link } from "react-router-dom";
 
 
 const dummyarray=[]
@@ -19,6 +20,8 @@ const Body = () => {
   const [Searchtxt,setSearchtxt]=useState("");
   const [FilteredRestraunt,SetFilteredRestraunt]=useState([])
   const [pizzaList,setPizzaList]=useState([])
+  const {updateShareData}=useMyContext()
+  
   var i=0
 
   useEffect(()=>{
@@ -36,15 +39,15 @@ const Body = () => {
         slicedData[childkey].resID=i++
       }
     }
-    console.log(slicedData)
+    console.log(slicedData,"body data here")
+    updateShareData(slicedData)
     setPizzaList(slicedData)
     SetFilteredRestraunt(slicedData)
     
 
   }
   console.log(pizzaList,"pizzalist here")
-    // if(FilteredRestraunt?.length === 0)
-    //   return <h1>No Restaurants found</h1>
+    
     return (pizzaList?.length===0)? 
     <div className="restraunt-list">
     {dummyarray.map((restraunt)=>{
@@ -74,7 +77,7 @@ const Body = () => {
       {(FilteredRestraunt?.length) === 0 ? <h1> No Restaurants Found</h1> :
       <div className="restraunt-list">
         {FilteredRestraunt.map((restraunt)=>{
-          return <RestrauntCard {...restraunt} key={restraunt.id} />
+          return <Link to={"/restaurant/"+restraunt.resID} key={restraunt.resID}><RestrauntCard {...restraunt} key={restraunt.id} /></Link>
           // return <Simmer />
           
         })}
