@@ -3,6 +3,8 @@ import RestrauntCard from "./RestrauntCard";
 import { useEffect, useState } from "react";
 import { useMyContext } from "./Context";
 import { Link } from "react-router-dom";
+import {filterData} from "../common/filter";
+import useOnline from "../common/useOnline";
 
 
 const dummyarray=[]
@@ -11,18 +13,14 @@ dummyarray.push(i)
 }
 
 
-function filterData(searchtext,slicedData){
-  const searchtextLower=searchtext.toLowerCase()
-const filteredData= slicedData.filter((restraunt)=>restraunt.title.toLowerCase().includes(searchtextLower));
-return filteredData
-}
+
 const Body = () => {
   const [Searchtxt,setSearchtxt]=useState("");
   const [FilteredRestraunt,SetFilteredRestraunt]=useState([])
   const [pizzaList,setPizzaList]=useState([])
   const {updateShareData}=useMyContext()
   
-  var i=0
+  
 
   useEffect(()=>{
    getRestaurants()
@@ -33,20 +31,25 @@ const Body = () => {
     const data = await fetch("https://api.pizzahut.io/v1/content/products?sector=in-1&locale=en-in");
     const json = await data.json()
     const slicedData= json.slice(0,21)
-    console.log(slicedData,"json here")
+    var i=0
+    
     for(var childkey in slicedData){
       if(slicedData.hasOwnProperty(childkey)){
         slicedData[childkey].resID=i++
       }
     }
-    console.log(slicedData,"body data here")
+    
     updateShareData(slicedData)
     setPizzaList(slicedData)
     SetFilteredRestraunt(slicedData)
     
 
   }
-  console.log(pizzaList,"pizzalist here")
+    const online= useOnline()
+    console.log(online,"status here")
+    if(!online){
+      return <h1>Offline please check your internet connection</h1>
+    }
     
     return (pizzaList?.length===0)? 
     <div className="restraunt-list">

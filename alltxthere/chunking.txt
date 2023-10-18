@@ -1,0 +1,21 @@
+chunking
+code splitting
+dynamic bundling
+lazy loading 
+on demand loading
+dynamic import 
+
+these are concepts which we need while builing large scale projects because if the bundler just makes one index.js file out of hundreds of components then it 
+will severely effect the performance of the website.
+
+is bundling good or bad?
+
+bundling is good to an extent but if the scale is too large then you have to go for logical bundling where all these concepts come into play.
+
+
+while lazy loading it takes some time to load the bundle so in the mean time react tries to render the file which results in a suspension of the  
+rendering so it throws an error everytime.
+
+so we need one more react component called suspense which takes care of all the things.
+
+suspense takes a prop called fallback which shows you what you need to show in the mean time when the bundle loads.

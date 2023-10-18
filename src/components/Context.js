@@ -11,7 +11,7 @@ export function useMyContext() {
 export function MyProvider({ children }) {
   // Define your shared state here
   const [sharedData, setSharedData] = useState(null);
-  console.log(sharedData,"context data here")
+  // console.log(sharedData,"context data here")s
   const updateShareData =(newdata)=>{
     setSharedData(newdata)
   }
