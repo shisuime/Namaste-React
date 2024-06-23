@@ -35,7 +35,6 @@ const useFetchData = (restaurantId) => {
       Setpizzalist(filteredList);
     } catch (error) {
       console.error("Error fetching data:", error);
-      // You can handle the error here, e.g., set an error state.
     }
   }
 
