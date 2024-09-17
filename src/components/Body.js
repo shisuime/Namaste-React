@@ -20,34 +20,46 @@ const Body = () => {
   useEffect(() => {
     getRestaurants();
   }, []);
-
+  // "https://api.pizzahut.io/v1/content/products?sector=in-1&locale=en-in"
   async function getRestaurants() {
     const data = await fetch(
-      "https://api.pizzahut.io/v1/content/products?sector=in-1&locale=en-in"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    const slicedData = json.slice(0, 21);
-    var i = 0;
+    console.log(
+      "dwad",
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
+      FilteredRestraunt
+    );
+    // const slicedData = json.slice(0, 21);
+    // var i = 0;
 
-    for (var childkey in slicedData) {
-      if (slicedData.hasOwnProperty(childkey)) {
-        slicedData[childkey].resID = i++;
-      }
-    }
-
-    updateShareData(slicedData);
-    setPizzaList(slicedData);
-    SetFilteredRestraunt(slicedData);
+    // for (var childkey in slicedData) {
+    //   if (slicedData.hasOwnProperty(childkey)) {
+    //     slicedData[childkey].resID = i++;
+    //   }
+    // }
+    updateShareData(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setPizzaList(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    SetFilteredRestraunt(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   }
   const online = useOnline();
-  console.log(online, "status here");
+  // console.log(online, "status here");
   if (!online) {
     return <h1>Offline please check your internet connection</h1>;
   }
+  // console.log(FilteredRestraunt, "checking ");
 
   return pizzaList?.length === 0 ? (
     <div className="restraunt-list">
-      {dummyarray.map((restraun, idx) => {
+      {dummyarray.map((idx) => {
         return <Simmer key={idx} />;
       })}
     </div>
@@ -76,14 +88,18 @@ const Body = () => {
         <h1> No Restaurants Found</h1>
       ) : (
         <div className="flex flex-wrap gap-10">
-          {FilteredRestraunt.map((restraunt, idx) => {
-            return (
-              <Link to={"/restaurant/" + restraunt.resID} key={restraunt.resID}>
-                <RestrauntCard {...restraunt} key={restraunt.id} />
-              </Link>
-            );
-            // return <Simmer />
-          })}
+          {FilteredRestraunt &&
+            FilteredRestraunt.map((restraunt) => {
+              return (
+                <Link
+                  to={"/restaurant/" + restraunt.resID}
+                  key={restraunt?.info?.id}
+                >
+                  <RestrauntCard resData={restraunt?.info} />
+                </Link>
+              );
+              // return <Simmer />
+            })}
         </div>
       )}
     </div>
