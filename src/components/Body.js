@@ -1,5 +1,5 @@
 import Simmer from "./Simmer";
-import RestrauntCard from "./RestrauntCard";
+import RestrauntCard, { withOpenLabel } from "./RestrauntCard";
 import { useEffect, useState } from "react";
 import { useMyContext } from "./Context";
 import { Link } from "react-router-dom";
@@ -20,18 +20,13 @@ const Body = () => {
   useEffect(() => {
     getRestaurants();
   }, []);
-  // "https://api.pizzahut.io/v1/content/products?sector=in-1&locale=en-in"
+
   async function getRestaurants() {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      // "https://api.pizzahut.io/v1/content/products?sector=in-1&locale=en-in"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(
-      "dwad",
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants,
-      FilteredRestraunt
-    );
     // const slicedData = json.slice(0, 21);
     // var i = 0;
 
@@ -40,22 +35,25 @@ const Body = () => {
     //     slicedData[childkey].resID = i++;
     //   }
     // }
+
     updateShareData(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setPizzaList(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     SetFilteredRestraunt(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    console.log("data", json);
   }
   const online = useOnline();
-  // console.log(online, "status here");
+  console.log(online, "status here");
   if (!online) {
     return <h1>Offline please check your internet connection</h1>;
   }
-  // console.log(FilteredRestraunt, "checking ");
+
+  const OpenRestaurantCard = withOpenLabel(RestrauntCard);
 
   return pizzaList?.length === 0 ? (
     <div className="restraunt-list">
@@ -88,18 +86,21 @@ const Body = () => {
         <h1> No Restaurants Found</h1>
       ) : (
         <div className="flex flex-wrap gap-10">
-          {FilteredRestraunt &&
-            FilteredRestraunt.map((restraunt) => {
-              return (
-                <Link
-                  to={"/restaurant/" + restraunt.resID}
-                  key={restraunt?.info?.id}
-                >
-                  <RestrauntCard resData={restraunt?.info} />
-                </Link>
-              );
-              // return <Simmer />
-            })}
+          {FilteredRestraunt.map((restraunt, idx) => {
+            return (
+              <Link
+                to={"/restaurant/" + restraunt?.info?.id}
+                key={restraunt.info.id}
+              >
+                {restraunt?.info?.isOpen ? (
+                  <OpenRestaurantCard resData={restraunt?.info} />
+                ) : (
+                  <RestrauntCard {...restraunt?.info} key={restraunt.id} />
+                )}
+              </Link>
+            );
+            // return <Simmer />
+          })}
         </div>
       )}
     </div>

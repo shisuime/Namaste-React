@@ -1,44 +1,41 @@
 import { useState, useEffect } from "react";
 
 const useFetchData = (restaurantId) => {
-  const [pizzalist, Setpizzalist] = useState([]);
+  const [resInfo, setResInfo] = useState(null); // Initialized as `null` since data seems to be an object
 
   useEffect(() => {
-    getRestaurants();
+    if (restaurantId) {
+      getRestaurants();
+    }
   }, [restaurantId]);
 
   async function getRestaurants() {
     try {
-      // Reset pizzalist to an empty array
-      Setpizzalist([]);
+      // Reset resInfo to null before fetching new data
+      setResInfo(null);
 
       const data = await fetch(
-        "https://api.pizzahut.io/v1/content/products?sector=in-1&locale=en-in"
+        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=${restaurantId}`
       );
+
       if (!data.ok) {
         throw new Error("Network response was not ok");
       }
+
       const json = await data.json();
-      const slicedData = json.slice(0, 21);
-      let i = 0;
 
-      for (var childkey in slicedData) {
-        if (slicedData.hasOwnProperty(childkey)) {
-          slicedData[childkey].resID = i++;
-        }
+      // Check if the expected structure exists before setting it
+      if (json?.data) {
+        setResInfo(json?.data); // Set the fetched data
+      } else {
+        console.error("Unexpected data structure", json);
       }
-
-      const filteredList = slicedData.filter(
-        (item) => item.resID == restaurantId
-      );
-
-      Setpizzalist(filteredList);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }
 
-  return pizzalist;
+  return resInfo; // Return the fetched restaurant info
 };
 
 export default useFetchData;
