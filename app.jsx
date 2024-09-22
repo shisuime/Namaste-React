@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import "./App.css";
+import "./app.css";
+
 import Headercomponent from "./src/components/Header";
 import Body from "./src/components/Body";
 import Footer from "./src/components/Footer";
@@ -13,14 +14,18 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { MyProvider } from "./src/components/Context";
 import Profile from "./src/components/Profile";
 import Simmer from "./src/components/Simmer";
+import { Provider } from "react-redux";
+import appStore from "./src/utils/appStore";
 
 const Instamart = lazy(() => import("./src/components/Instamart"));
 const Applayout = () => {
   return (
     <>
-      <Headercomponent />
-      <Outlet />
-      <Footer />
+      <Provider store={appStore}>
+        <Headercomponent />
+        <Outlet />
+        <Footer />
+      </Provider>
     </>
   );
 };

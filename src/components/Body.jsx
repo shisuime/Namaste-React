@@ -1,6 +1,6 @@
 import Simmer from "./Simmer";
 import RestrauntCard, { withOpenLabel } from "./RestrauntCard";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMyContext } from "./Context";
 import { Link } from "react-router-dom";
 import { filterData } from "../common/filter";
@@ -45,7 +45,7 @@ const Body = () => {
     SetFilteredRestraunt(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    console.log("data", json);
+    // console.log("data", json);
   }
   const online = useOnline();
   console.log(online, "status here");
