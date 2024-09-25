@@ -1,0 +1,7 @@
+#Types of testing a developer can do:
+
+- Unit testing
+- Integration testing
+- End to End testing
+
+react testing library uses jest behind the scenes
