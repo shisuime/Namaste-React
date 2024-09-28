@@ -3,7 +3,10 @@ import { CDN_URL } from "../utils/constants";
 const RestrauntCard = ({ resData }) => {
   const { cloudinaryImageId, name, avgRatingString, type } = resData;
   return (
-    <div className="m-4 p-4 w-[250px] h-[350px] bg-gray-200 hover:w-[260px]  transition-all duration-300">
+    <div
+      data-testid="resCard"
+      className="m-4 p-4 w-[250px] h-[350px] bg-gray-200 hover:w-[260px]  transition-all duration-300"
+    >
       <img src={CDN_URL + cloudinaryImageId}></img>
       <h1>{name}</h1>
       <h2>{avgRatingString}</h2>
